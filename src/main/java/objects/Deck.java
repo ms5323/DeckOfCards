@@ -11,18 +11,18 @@ public class Deck {
 	private int numCards;
 	
 	public Deck() {
-		Cards = new ArrayList<Card>();
+		Cards = new ArrayList<Card>(); //creates an empty deck of cards
 		numCards = 0;
 		
 	}
-	public void generateDeck(){
-		System.out.println("Creating new deck...");
-		Cards.clear();
+	public void generateDeck(){//creates the deck
+	
+		Cards.clear(); // emptys deck
 		
 		for(CardSuits suits : CardSuits.values()) {
 			for(CardValues values : CardValues.values()) {
-				Card card = new Card(values,suits);
-				Cards.add(card);
+				Card card = new Card(values,suits);//creates a card with a value and suit
+				Cards.add(card);//adds card to the arraylist
 				
 			}
 		}
@@ -31,26 +31,26 @@ public class Deck {
 	
 	public void shuffleDeck() {
 		System.out.println("Shuffling Cards...");
-		Collections.shuffle(Cards);
+		Collections.shuffle(Cards); //shuffles the deck. 
 	}
 	
 	public Card dealOneCard(){
-		Card deal = Cards.get(Cards.size()-1);
+		if(Cards.size() == 0) {
+			System.out.println("No cards are left"); //if all cards are dealt, user gets this message
+			return null;
+		}
 		System.out.println("Dealing one card...");
+		Card deal = Cards.get(Cards.size()-1);//gets the last card
 		deal.showCard();
-		Cards.remove(Cards.size()-1);
-		numCards = numCards - 1;
-		return deal;
+		Cards.remove(Cards.size()-1);//removes the cards shown from deck
+		System.out.println("there is " + Integer.toString(Cards.size())+ " card remaining in deck");
+		return deal; //deals one card
 	}
 	public void showDeck() {
-		if(numCards == 0) {
-			System.out.println("No more cards are left");
-		}else {
-			System.out.println("Deck has " + numCards + " left.");
+
 			System.out.println("Printing cards...");
 			for(int i = 0; i < Cards.size()-1; i++) {
-				Cards.get(i).showCard();
+				Cards.get(i).showCard(); //prints each card in deck
 			}
 		}
 	}
-}
