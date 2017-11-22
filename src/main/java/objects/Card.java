@@ -3,7 +3,7 @@ package objects;
 import enums.CardSuits;
 import enums.CardValues;
 
-public class Card {
+public class Card { //constructor for card
 	CardValues value;
 	CardSuits suit;
 	
@@ -32,5 +32,6 @@ public class Card {
 		System.out.println("Card value is " + value + ". " + "Card suit is " + suit + ".");
 		return "Card value is " + value + ". " + "Card suit is " + suit + ".";
 	}
-	
+
+
 }
